@@ -42,54 +42,72 @@ Este proyecto maneja credenciales privadas (como tu llave de API de OpenAI u Ope
 Sigue estos pasos para clonar y poner en marcha el proyecto en tu máquina local:
 
 ### 1. Clona el repositorio
-```bash
+bash
 git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/tu-usuario/tu-repositorio.git)
 cd tu-repositorio
-2. Crea y activa un entorno virtual
-Bash
+
+### 2. Crea y activa un entorno virtual
+#### bash <br>
 python -m venv venv
 
-# En Windows:
+
+#### En Windows:
 venv\Scripts\activate
 
-# En macOS / Linux:
+#### En macOS / Linux:
 source venv/bin/activate
-3. Instala las dependencias
+
+### 3. Instala las dependencias
 Instala los paquetes necesarios ejecutando el siguiente comando:
 
-Bash
+#### bash <br>
 pip install PyQt5 openai python-dotenv rapidfuzz
 (Opcional: Si cuentas con un archivo de requerimientos, puedes usar pip install -r requirements.txt)
 
-4. Configura tus variables de entorno
+### 4. Configura tus variables de entorno
 Crea un archivo llamado exactamente .env en la raíz del proyecto y añade tus credenciales basándote en la siguiente estructura:
 
-Code snippet
-OPENAI_API_KEY=tu_clave_real_de_openrouter_o_openai
-OPENAI_BASE_URL=[https://openrouter.ai/api/v1](https://openrouter.ai/api/v1)
-OPENAI_MODEL=deepseek/deepseek-r1:free
-🚀 Uso de la Aplicación
+* OPENAI_API_KEY=tu_clave_real_de_openrouter_o_openai
+* OPENAI_BASE_URL=[https://openrouter.ai/api/v1](https://openrouter.ai/api/v1)
+* OPENAI_MODEL=deepseek/deepseek-r1:free
+
+
+### 🚀 Uso de la Aplicación
+
 Una vez configurado el entorno y tus llaves de acceso, ejecuta el archivo principal de la interfaz gráfica:
 
-Bash
-python chatbot_gui.py
-📂 Estructura del Proyecto
-Plaintext
+#### bash <br>
+python chatbot_gui.py<br>
+
+
+### 📂 Estructura del Proyecto
+
 📦 tu-repositorio/
+
 ├── 📁 icon/                 # Recursos gráficos (logotipos e iconos de pestañas)
+
 ├── 📄 .env                  # Variables de entorno y llaves privadas (Ignorado por Git)
+
 ├── 📄 .gitignore            # Archivos y carpetas ignorados por control de versiones
+
 ├── 📄 chatbot_gui.py        # Ventana principal y control de pestañas (PyQt5)
+
 ├── 📄 config.py             # Cargador de configuraciones y variables de entorno
+
 ├── 📄 db_helpers.py         # Conexión, esquemas y operaciones con SQLite
+
 ├── 📄 ia_helpers.py         # Construcción de prompts y gestión del hilo de IA (QThread)
+
 ├── 📄 nlp_helpers.py        # Funciones de procesamiento de texto y búsqueda difusa
+
 ├── 📄 utils.py              # Funciones auxiliares (conexión a internet y archivos de texto)
+
 └── 📄 README.md             # Documentación oficial del proyecto
 
+<br/>
 
-🤝 Contribuciones
+### 🤝 Contribuciones
 ¡Las contribuciones y sugerencias son completamente bienvenidas! Si deseas proponer mejoras, por favor abre un issue o envía un pull request con tus cambios propuestos.
 
-📄 Licencia
+### 📄 Licencia
 Este proyecto se distribuye bajo los términos de la licencia MIT.

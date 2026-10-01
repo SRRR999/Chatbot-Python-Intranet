@@ -1,0 +1,6 @@
+venv/
+env/
+__pycache__/
+.env
+chatbot.db
+preguntas_no_resueltas.txt

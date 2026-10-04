@@ -14,8 +14,8 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "deepseek/deepseek-r1:free")
 
 # Rutas locales
 DB_PATH = "chatbot.db"
-LOGO_PATH = "icon/EcoSalud.png"
+LOGO_PATH = "icon/chatbot.png"
 LOGO_PATH_SAVE = "icon/burbuja-de-chat.png"
-LOGO_PATH_EDIT = "icon/document-editor.png"
-LOGO_PATH_SUGE = "idea (1).png"
+LOGO_PATH_EDIT = "icon/edicion-chat.png"
+LOGO_PATH_SUGE = "icon/sugerencia-chat.png"
 PREGUNTAS_NO_RESUELTAS = "preguntas_no_resueltas.txt"

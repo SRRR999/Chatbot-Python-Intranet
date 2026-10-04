@@ -6,11 +6,11 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 
 ## ✨ Características Principales
 
-* **Interfaz Gráfica Moderna (PyQt5):** Interfaz limpia estructurada en pestañas con diseño optimizado (fuentes personalizadas, logotipos institucionales y paneles interactivos).
+* **Interfaz Gráfica Moderna (PyQt5):** Interfaz limpia estructurada en pestañas con diseño optimizado (fuentes personalizadas, logotipos y paneles interactivos).
 * **Control de Acceso y Roles (Login):** Autenticación de usuarios con diferenciación de privilegios:
   * *Empleados:* Pueden chatear, consultar sugerencias frecuentes y proponer nuevas preguntas/respuestas.
   * *Administradores:* Tienen acceso total para agregar, editar y administrar la base de conocimientos oficial.
-* **Base de Datos Local (SQLite):** Persistencia segura y rápida de la información interna mediante archivos locales.
+* **Base de Datos Local (SQLite):** Información rápida e interna mediante archivos locales.
 * **Sugerencias Dinámicas y Búsqueda Inteligente:** Búsqueda en tiempo real por palabras clave o generación de sugerencias aleatorias basadas en el historial.
 * **Procesamiento Asíncrono (`IAWorker`):** Consultas a la IA ejecutadas en hilos independientes (`QThread`) para evitar congelamientos en la interfaz gráfica.
 * **Gestión de Preguntas No Resueltas:** Sistema de respaldo que registra automáticamente consultas que la IA no pudo responder de forma directa para su posterior revisión administrativa.
@@ -24,7 +24,7 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 * **OpenAI Python SDK** (Comunicación con modelos de lenguaje)
 * **python-dotenv** (Gestión segura de variables de entorno)
 * **rapidfuzz** (Coincidencia difusa de texto para sugerencias y NLP)
-* **SQLite3** (Base de datos embebida)
+* **SQLite3** (Base de datos)
 
 ---
 
@@ -42,7 +42,7 @@ Este proyecto maneja credenciales privadas (como tu llave de API de OpenAI u Ope
 Sigue estos pasos para clonar y poner en marcha el proyecto en tu máquina local:
 
 ### 1. Clona el repositorio
-bash
+#### bash <br>
 git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/tu-usuario/tu-repositorio.git)
 cd tu-repositorio
 
@@ -71,6 +71,14 @@ Crea un archivo llamado exactamente .env en la raíz del proyecto y añade tus c
 * OPENAI_BASE_URL=[https://openrouter.ai/api/v1](https://openrouter.ai/api/v1)
 * OPENAI_MODEL=deepseek/deepseek-r1:free
 
+
+## Personalización de Logos e Iconos 🎨
+
+Puedes cambiar fácilmente la identidad visual de tu chatbot:
+1. Reemplaza los archivos de imagen ubicados en `icon/` por tus propios logos.
+2. Asegúrate de mantener los mismos nombres de archivo o actualiza las rutas en el archivo de configuración (config.py).
+
+*(Nota: Los iconos por defecto utilizados en este proyecto provienen de [Flaticon](https://www.flaticon.com/) y se otorgan los créditos correspondientes a sus autores).*
 
 ### 🚀 Uso de la Aplicación
 
@@ -105,6 +113,12 @@ python chatbot_gui.py<br>
 └── 📄 README.md             # Documentación oficial del proyecto
 
 <br/>
+
+## 🎨 Agradecimientos y Recursos
+
+* Créditos a los autores de los iconos:
+  * chatbot.png: Diseñado por [ppanggm](https://www.magnific.com/es/autor/ppanggm/iconos)
+  * burbuja-de-chat.png --- edicion-chat.png --- sugerencia-chat.png: Diseñados por [Prabowo747](https://www.magnific.com/es/autor/prabowo747/iconos)
 
 ### 🤝 Contribuciones
 ¡Las contribuciones y sugerencias son completamente bienvenidas! Si deseas proponer mejoras, por favor abre un issue o envía un pull request con tus cambios propuestos.

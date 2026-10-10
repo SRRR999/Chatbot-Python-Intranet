@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QDialog
+from PySide2.QtWidgets import QApplication, QDialog
 from dialogs import LoginDialog
 from chatbot_gui import ChatbotGUI
 from db_helpers import init_db
@@ -13,4 +13,4 @@ if __name__ == "__main__":
         gui.show()
         sys.exit(app.exec_())
     else:
-        sys.exit(0)
+        sys.exit()

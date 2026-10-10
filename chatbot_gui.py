@@ -1,11 +1,11 @@
 import os
 import random
-from PyQt5.QtWidgets import (
+from PySide2.QtWidgets import (
     QWidget, QVBoxLayout, QLineEdit, QPushButton, QTextBrowser,
     QTabWidget, QHBoxLayout, QTextEdit, QLabel, QMessageBox, QScrollArea, QApplication, QDialog
 )
-from PyQt5.QtCore import QTimer, QCoreApplication, Qt
-from PyQt5.QtGui import QPixmap
+from PySide2.QtCore import QTimer, QCoreApplication, Qt
+from PySide2.QtGui import QPixmap
 
 from ia_helpers import generar_prompt, IAWorker
 from dialogs import LoginDialog
@@ -17,10 +17,9 @@ from db_helpers import (
     init_db, get_preguntas_respuestas, insertar_pregunta_respuesta,
     update_pregunta_respuesta
 )
-from utils import guardar_pregunta_no_resuelta
 
 from utils import (
-    eliminar_pregunta_del_txt, cargar_preguntas_no_resueltas
+    guardar_pregunta_no_resuelta, eliminar_pregunta_del_txt, cargar_preguntas_no_resueltas
 )
 
 SUGERENCIAS_POR_PAGINA = 5
@@ -299,7 +298,7 @@ class ChatbotGUI(QWidget):
                 font-family: 'Times New Roman';
             """)
             btn.setToolTip(pregunta)
-            btn.clicked.connect(lambda _, p=pregunta, r=respuesta: self.mostrar_respuesta(p, r))
+            btn.clicked.connect(lambda _=None, p=pregunta, r=respuesta: self.mostrar_respuesta(p, r))
             self.sugerencias_panel_layout.addWidget(btn)
 
         #self.ver_mas_btn.setVisible(fin < len(sugerencias))

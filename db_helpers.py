@@ -1,4 +1,5 @@
 import sqlite3
+import bcrypt
 
 DB_PATH = "chatbot.db"
 
@@ -20,26 +21,30 @@ def init_db():
     conn.close()
 
 def registrar_usuario(nombre_usuario, password, rol="empleado"):
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    try:
-        c.execute("INSERT INTO usuarios (nombre_usuario, password, rol) VALUES (?, ?, ?)",
-                  (nombre_usuario, password, rol))
-        conn.commit()
-        return True
-    except sqlite3.IntegrityError:
-        return False
-    finally:
-        conn.close()
 
-def autenticar_usuario(nombre_usuario, password):
+	password_bytes = password.encode('utf-8')
+	password = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
+	conn = sqlite3.connect(DB_PATH)
+	c = conn.cursor()
+    
+	try:
+		c.execute("INSERT INTO usuarios (nombre_usuario, password, rol) VALUES (?, ?, ?)", (nombre_usuario, password, rol))
+		conn.commit()
+		return True
+	except sqlite3.IntegrityError:
+		return False
+	finally:
+		conn.close()
+
+def autenticar_usuario(nombre_usuario):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    c.execute("SELECT nombre_usuario, rol FROM usuarios WHERE nombre_usuario=? AND password=?", (nombre_usuario, password))
+    c.execute("SELECT nombre_usuario, rol, password FROM usuarios WHERE nombre_usuario=?", (nombre_usuario,))
     row = c.fetchone()
     conn.close()
+    
     if row:
-        return {"nombre_usuario": row[0], "rol": row[1]}
+        return {"nombre_usuario": row[0], "rol": row[1], "password": row[2].decode('utf-8')}
     return None
 
 def existe_admin():

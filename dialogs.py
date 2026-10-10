@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import (
+from PySide2.QtWidgets import (
     QDialog, QLineEdit, QPushButton, QVBoxLayout, QLabel, QMessageBox,
     QHBoxLayout
 )
@@ -84,7 +84,7 @@ class LoginDialog(QDialog):
         if not usuario or not password:
             QMessageBox.warning(self, "Campos vacíos", "Completa usuario y contraseña.")
             return
-        user_data = autenticar_usuario(usuario, password)
+        user_data = autenticar_usuario(usuario)
         if user_data:
             self.usuario = user_data
             self.accept()

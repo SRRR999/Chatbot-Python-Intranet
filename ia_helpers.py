@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QThread, pyqtSignal
+from PySide2.QtCore import QThread, Signal
 from config import OPENAI_MODEL
 
 def generar_prompt(pregunta, sugerencias):
@@ -12,7 +12,7 @@ def generar_prompt(pregunta, sugerencias):
     )
 
 class IAWorker(QThread):
-    resultado = pyqtSignal(str)
+    resultado = Signal(str)
     def __init__(self, prompt, openai_client):
         super().__init__()
         self.prompt = prompt

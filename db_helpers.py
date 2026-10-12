@@ -23,7 +23,10 @@ def init_db():
 def registrar_usuario(nombre_usuario, password, rol="empleado"):
 
 	password_bytes = password.encode('utf-8')
+	print(f"El password es {password}, el password_bytes es: {password_bytes}.")
 	password = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
+	print(f"Y el password encriptado es: {password}")
+	
 	conn = sqlite3.connect(DB_PATH)
 	c = conn.cursor()
     
@@ -36,16 +39,24 @@ def registrar_usuario(nombre_usuario, password, rol="empleado"):
 	finally:
 		conn.close()
 
-def autenticar_usuario(nombre_usuario):
+
+def autenticar_usuario(nombre_usuario, password):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
+
+    password_bytes = password.encode('utf-8')
+    print(f"El password es {password}, el password_bytes es: {password_bytes}.")
+    password = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
+    print(f"Y el password encriptado es: {password}")
+	
     c.execute("SELECT nombre_usuario, rol, password FROM usuarios WHERE nombre_usuario=?", (nombre_usuario,))
     row = c.fetchone()
     conn.close()
-    
+ 
     if row:
-        return {"nombre_usuario": row[0], "rol": row[1], "password": row[2].decode('utf-8')}
-    return None
+        return {"nombre_usuario": row[0], "rol": row[1], "password_hash_bytes": row[2]}
+    return False
+
 
 def existe_admin():
     conn = sqlite3.connect(DB_PATH)

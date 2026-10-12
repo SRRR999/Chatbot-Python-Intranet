@@ -9,10 +9,10 @@ from PySide2.QtGui import QPixmap
 
 from ia_helpers import generar_prompt, IAWorker
 from dialogs import LoginDialog
-from config import OPENAI_API_KEY, OPENAI_BASE_URL
+from config import OPENAI_API_KEY, OPENAI_BASE_URL, LOGO_PATH, LOGO_PATH_EDIT, LOGO_PATH_SAVE, LOGO_PATH_SUGE
+
 import openai
 
-from config import LOGO_PATH, LOGO_PATH_EDIT, LOGO_PATH_SAVE
 from db_helpers import (
     init_db, get_preguntas_respuestas, insertar_pregunta_respuesta,
     update_pregunta_respuesta
@@ -77,8 +77,6 @@ class ChatbotGUI(QWidget):
     def init_ui(self):
         self.tabWidget = QTabWidget(self)
         
-
-        
         if self.usuario['rol'] != 'admin':
             self.init_chat_tab()
             self.init_sugerir_tab()
@@ -92,6 +90,7 @@ class ChatbotGUI(QWidget):
         main_layout.addWidget(self.tabWidget)
         self.setLayout(main_layout)
         self.tabWidget.setCurrentWidget(self.chat_tab)
+
 
     def init_chat_tab(self):
         self.chat_tab = QWidget()

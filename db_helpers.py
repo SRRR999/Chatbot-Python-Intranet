@@ -1,7 +1,8 @@
 import sqlite3
-import bcrypt
+from password import hash_password, verify_password, is_hashed
 
 DB_PATH = "chatbot.db"
+
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
@@ -20,42 +21,37 @@ def init_db():
     conn.commit()
     conn.close()
 
-def registrar_usuario(nombre_usuario, password, rol="empleado"):
 
-	password_bytes = password.encode('utf-8')
-	print(f"El password es {password}, el password_bytes es: {password_bytes}.")
-	password = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
-	print(f"Y el password encriptado es: {password}")
-	
-	conn = sqlite3.connect(DB_PATH)
-	c = conn.cursor()
-    
-	try:
-		c.execute("INSERT INTO usuarios (nombre_usuario, password, rol) VALUES (?, ?, ?)", (nombre_usuario, password, rol))
-		conn.commit()
-		return True
-	except sqlite3.IntegrityError:
-		return False
-	finally:
-		conn.close()
+def registrar_usuario(nombre_usuario, password, rol="empleado"):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    try:
+        password_hash = hash_password(password)
+        c.execute("INSERT INTO usuarios (nombre_usuario, password, rol) VALUES (?, ?, ?)",
+                  (nombre_usuario, password_hash, rol))
+        conn.commit()
+        return True
+    except sqlite3.IntegrityError:
+        return False
+    finally:
+        conn.close()
 
 
 def autenticar_usuario(nombre_usuario, password):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-
-    password_bytes = password.encode('utf-8')
-    print(f"El password es {password}, el password_bytes es: {password_bytes}.")
-    password = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
-    print(f"Y el password encriptado es: {password}")
-	
-    c.execute("SELECT nombre_usuario, rol, password FROM usuarios WHERE nombre_usuario=?", (nombre_usuario,))
+    c.execute("SELECT nombre_usuario, password, rol FROM usuarios WHERE nombre_usuario=?",
+              (nombre_usuario,))
     row = c.fetchone()
     conn.close()
- 
-    if row:
-        return {"nombre_usuario": row[0], "rol": row[1], "password_hash_bytes": row[2]}
-    return False
+
+    if not row:
+        return None
+
+    nombre, hash_guardado, rol = row
+    if verify_password(password, hash_guardado):
+        return {"nombre_usuario": nombre, "rol": rol}
+    return None
 
 
 def existe_admin():
@@ -66,6 +62,7 @@ def existe_admin():
     conn.close()
     return count > 0
 
+
 def get_preguntas_respuestas():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
@@ -73,6 +70,7 @@ def get_preguntas_respuestas():
     resultados = c.fetchall()
     conn.close()
     return resultados
+
 
 def insertar_pregunta_respuesta(pregunta, respuesta):
     conn = sqlite3.connect(DB_PATH)
@@ -84,6 +82,7 @@ def insertar_pregunta_respuesta(pregunta, respuesta):
         pass
     finally:
         conn.close()
+
 
 def update_pregunta_respuesta(pregunta_ant, respuesta_ant, pregunta_nueva, respuesta_nueva):
     conn = sqlite3.connect(DB_PATH)

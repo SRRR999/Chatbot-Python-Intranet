@@ -3,14 +3,7 @@ from PySide2.QtWidgets import (
     QHBoxLayout
 )
 from db_helpers import registrar_usuario, autenticar_usuario, existe_admin
-
-import bcrypt
-import hashlib
-
-def _preparar(password: str) -> bytes:
-    """Convierte el password a 32 bytes fijos con SHA-256.
-    Así bcrypt nunca trunca, sin importar el largo del password."""
-    return hashlib.sha256(password.encode("utf-8")).digest()
+import password
 
 class RegistroDialog(QDialog):
     def __init__(self):
@@ -109,9 +102,8 @@ class LoginDialog(QDialog):
             
             
         user_data = autenticar_usuario(usuario, password)
-        password_value = bcrypt.checkpw(_preparar(password), user_data['password_hash_bytes'])
         
-        if user_data and password_value:
+        if user_data:
             self.usuario = user_data
             self.accept()
             

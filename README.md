@@ -1,12 +1,12 @@
-# 🤖 Sistema Administrativo con Chatbot IA (PyQt5)
+# 🤖 Sistema Administrativo con Chatbot IA (PySide2)
 
-Un sistema de escritorio interactivo y modular desarrollado en Python utilizando PyQt5. Este proyecto integra un chatbot inteligente potenciado por modelos de lenguaje avanzados (vía OpenAI u OpenRouter), un sistema de gestión de base de datos local SQLite y un control riguroso de roles de usuario (Administrador y Empleado).
+Un sistema de escritorio interactivo y modular desarrollado en Python utilizando PySide2. Este proyecto integra un chatbot inteligente potenciado por modelos de lenguaje avanzados (vía OpenAI u OpenRouter), un sistema de gestión de base de datos local SQLite y un control riguroso de roles de usuario (Administrador y Empleado).
 
 ---
 
 ## ✨ Características Principales
 
-* **Interfaz Gráfica Moderna (PyQt5):** Interfaz limpia estructurada en pestañas con diseño optimizado (fuentes personalizadas, logotipos y paneles interactivos).
+* **Interfaz Gráfica (PySide2):** Interfaz limpia estructurada en pestañas con diseño optimizado (fuentes personalizadas, logotipos y paneles interactivos).
 * **Control de Acceso y Roles (Login):** Autenticación de usuarios con diferenciación de privilegios:
   * *Empleados:* Pueden chatear, consultar sugerencias frecuentes y proponer nuevas preguntas/respuestas.
   * *Administradores:* Tienen acceso total para agregar, editar y administrar la base de conocimientos oficial.
@@ -20,7 +20,7 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 ## 🛠️ Tecnologías y Librerías Utilizadas
 
 * **Python** 3.10+
-* **PyQt5** (Interfaz gráfica de escritorio)
+* **PySide2** (Interfaz gráfica de escritorio)
 * **OpenAI Python SDK** (Comunicación con modelos de lenguaje)
 * **python-dotenv** (Gestión segura de variables de entorno)
 * **rapidfuzz** (Coincidencia difusa de texto para sugerencias y NLP)
@@ -42,35 +42,43 @@ Este proyecto maneja credenciales privadas (como tu llave de API de OpenAI u Ope
 Sigue estos pasos para clonar y poner en marcha el proyecto en tu máquina local:
 
 ### 1. Clona el repositorio
-#### bash <br>
-git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/tu-usuario/tu-repositorio.git)
+```bash
+git clone https://github.com/tu-usuario/tu-repositorio.git
 cd tu-repositorio
+```
 
 ### 2. Crea y activa un entorno virtual
-#### bash <br>
+```bash
 python -m venv venv
+```
 
 
 #### En Windows:
+```bash
 venv\Scripts\activate
+```
 
 #### En macOS / Linux:
+```bash
 source venv/bin/activate
+```
 
 ### 3. Instala las dependencias
 Instala los paquetes necesarios ejecutando el siguiente comando:
 
-#### bash <br>
-pip install PyQt5 openai python-dotenv rapidfuzz
-(Opcional: Si cuentas con un archivo de requerimientos, puedes usar pip install -r requirements.txt)
+```bash
+pip install PySide2 openai python-dotenv rapidfuzz bcrypt
+```
+
 
 ### 4. Configura tus variables de entorno
 Crea un archivo llamado exactamente .env en la raíz del proyecto y añade tus credenciales basándote en la siguiente estructura:
 
-* OPENAI_API_KEY=tu_clave_real_de_openrouter_o_openai
-* OPENAI_BASE_URL=[https://openrouter.ai/api/v1](https://openrouter.ai/api/v1)
-* OPENAI_MODEL=deepseek/deepseek-r1:free
-
+```env
+OPENAI_API_KEY=tu_clave
+OPENAI_BASE_URL=https://openrouter.ai/api/v1
+OPENAI_MODEL=deepseek/deepseek-r1:free
+```
 
 ## Personalización de Logos e Iconos 🎨
 
@@ -84,8 +92,9 @@ Puedes cambiar fácilmente la identidad visual de tu chatbot:
 
 Una vez configurado el entorno y tus llaves de acceso, ejecuta el archivo principal de la interfaz gráfica:
 
-#### bash <br>
-python chatbot_gui.py<br>
+```bash
+python main.py
+```
 
 
 ### 📂 Estructura del Proyecto
@@ -98,13 +107,19 @@ python chatbot_gui.py<br>
 
 ├── 📄 .gitignore            # Archivos y carpetas ignorados por control de versiones
 
-├── 📄 chatbot_gui.py        # Ventana principal y control de pestañas (PyQt5)
+├── 📄 chatbot_gui.py        # Ventana principal y control de pestañas (PySide2)
 
 ├── 📄 config.py             # Cargador de configuraciones y variables de entorno
+
+├── 📄 main.py               # punto de entrada.
+
+├── 📄 dialogs.py            # ventanas de login y registro.
 
 ├── 📄 db_helpers.py         # Conexión, esquemas y operaciones con SQLite
 
 ├── 📄 ia_helpers.py         # Construcción de prompts y gestión del hilo de IA (QThread)
+
+├── 📄 password.py           # Hash y verificación de contraseñas (bcrypt)
 
 ├── 📄 nlp_helpers.py        # Funciones de procesamiento de texto y búsqueda difusa
 
@@ -112,7 +127,7 @@ python chatbot_gui.py<br>
 
 └── 📄 README.md             # Documentación oficial del proyecto
 
-<br/>
+
 
 ## 🎨 Agradecimientos y Recursos
 

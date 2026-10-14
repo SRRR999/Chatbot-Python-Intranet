@@ -33,19 +33,12 @@ class ChatbotGUI(QWidget):
         self.respuesta_actual_editable = None
         self.usuario = usuario
         self.openai_client = openai.OpenAI(api_key=OPENAI_API_KEY, base_url=OPENAI_BASE_URL)
-        init_db()
-        if not self.usuario:
-            self.mostrar_login()
         # Control de permisos:
         self.init_ui()
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_advertencia_btn)
         self.timer.start(2000)
-
-    def mostrar_login(self):
-        login_dialog = LoginDialog()
-        if login_dialog.exec_() == QDialog.Accepted:
-            self.usuario_actual = login_dialog.usuario
+        
 
     def enviar_a_ia(self):
         pregunta = self.ia_input.text().strip()
@@ -366,6 +359,7 @@ class ChatbotGUI(QWidget):
         self.editar_tab.setLayout(self.editar_layout_principal)
         self.tabWidget.insertTab(2, self.editar_tab, "Editar Pregunta/Respuesta")
 
+
     def init_admin_tab(self):
         self.admin_tab = QWidget()
         self.admin_layout_principal = QHBoxLayout()
@@ -427,6 +421,7 @@ class ChatbotGUI(QWidget):
     def mostrar_boton_editar(self, pregunta, respuesta):
         self.pregunta_actual_editable = pregunta
         self.respuesta_actual_editable = respuesta
+        
 
     def abrir_pestana_editar(self):
         self.edit_pregunta.setText(self.pregunta_actual_editable)

@@ -70,7 +70,6 @@ Instala los paquetes necesarios ejecutando el siguiente comando:
 pip install PySide2 openai python-dotenv rapidfuzz bcrypt
 ```
 
-
 ### 4. Configura tus variables de entorno
 Crea un archivo llamado exactamente .env en la raíz del proyecto y añade tus credenciales basándote en la siguiente estructura:
 
@@ -79,6 +78,7 @@ OPENAI_API_KEY=tu_clave
 OPENAI_BASE_URL=https://openrouter.ai/api/v1
 OPENAI_MODEL=deepseek/deepseek-r1:free
 ```
+---
 
 ## Personalización de Logos e Iconos 🎨
 
@@ -95,7 +95,7 @@ Una vez configurado el entorno y tus llaves de acceso, ejecuta el archivo princi
 ```bash
 python main.py
 ```
-
+---
 
 ### 📂 Estructura del Proyecto
 
@@ -127,7 +127,7 @@ python main.py
 
 └── 📄 README.md             # Documentación oficial del proyecto
 
-
+---
 
 ## 🎨 Agradecimientos y Recursos
 
@@ -136,8 +136,10 @@ python main.py
   * burbuja-de-chat.png --- edicion-chat.png --- sugerencia-chat.png: Diseñados por [Prabowo747](https://www.magnific.com/es/autor/prabowo747/iconos)
   * usuario.png: DIseñado por [Rukanicon](https://www.magnific.com/es/autor/rukanicon/iconos)
 
+---
 ### 🤝 Contribuciones
 ¡Las contribuciones y sugerencias son completamente bienvenidas! Si deseas proponer mejoras, por favor abre un issue o envía un pull request con tus cambios propuestos.
 
+---
 ### 📄 Licencia
 Este proyecto se distribuye bajo los términos de la licencia MIT.

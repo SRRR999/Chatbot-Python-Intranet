@@ -18,9 +18,13 @@ def eliminar_pregunta_del_txt(pregunta):
         with open(PREGUNTAS_NO_RESUELTAS, "r") as archivo:
             lineas = archivo.readlines()
         pregunta_normalizada = pregunta.strip().lower()
-        lineas = [l for l in lineas if l.strip().lower() != pregunta_normalizada]
+        lineas_filtradas = []
+        for l in lineas:
+            l_normalizada = l.strip().lower().removeprefix("pregunta sugerida: ")
+            if l_normalizada != pregunta_normalizada:
+                lineas_filtradas.append(l)
         with open(PREGUNTAS_NO_RESUELTAS, "w") as archivo:
-            archivo.writelines(lineas)
+            archivo.writelines(lineas_filtradas)
 
 def cargar_preguntas_no_resueltas():
     if os.path.exists(PREGUNTAS_NO_RESUELTAS):

@@ -13,6 +13,9 @@ from config import OPENAI_API_KEY, OPENAI_BASE_URL, LOGO_PATH, LOGO_PATH_EDIT, L
 
 import openai
 
+from admin_actions import AdminActionsMixin
+from chat_actions import ChatActionsMixin
+
 from db_helpers import (
     init_db, get_preguntas_respuestas, insertar_pregunta_respuesta,
     update_pregunta_respuesta
@@ -22,9 +25,8 @@ from utils import (
     guardar_pregunta_no_resuelta, eliminar_pregunta_del_txt, cargar_preguntas_no_resueltas
 )
 
-SUGERENCIAS_POR_PAGINA = 5
 
-class ChatbotGUI(QWidget):
+class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
     def __init__(self, usuario):
         super().__init__()
         self.setWindowTitle("Sistema Administrativo")

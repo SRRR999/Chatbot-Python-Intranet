@@ -297,7 +297,6 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
     def mostrar_boton_editar(self, pregunta, respuesta):
         self.pregunta_actual_editable = pregunta
         self.respuesta_actual_editable = respuesta
-        self.abrir_pestana_editar()
         
 
     def abrir_pestana_editar(self):

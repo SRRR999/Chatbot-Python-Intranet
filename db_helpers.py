@@ -1,5 +1,6 @@
 import sqlite3
 from password import hash_password, verify_password, is_hashed
+from rapidfuzz import fuzz, process
 
 DB_PATH = "chatbot.db"
 
@@ -91,3 +92,33 @@ def update_pregunta_respuesta(pregunta_ant, respuesta_ant, pregunta_nueva, respu
               (pregunta_nueva, respuesta_nueva, pregunta_ant, respuesta_ant))
     conn.commit()
     conn.close()
+
+
+def buscar_pregunta_similar(pregunta_usuario, umbral=70):
+    """Busca la pregunta más parecida en la DB.
+
+    Devuelve (pregunta, respuesta) si encuentra un match con
+    similitud >= umbral. Si no, devuelve None.
+    """
+    todas = get_preguntas_respuestas()
+    if not todas:
+        return None
+
+    preguntas = [p for p, _ in todas]
+    resultado = process.extractOne(
+        pregunta_usuario,
+        preguntas,
+        scorer=fuzz.token_set_ratio,
+    )
+
+    if resultado is None:
+        return None
+
+    match_pregunta, score, _ = resultado
+    if score < umbral:
+        return None
+
+    for p, r in todas:
+        if p == match_pregunta:
+            return (p, r, score)
+    return None

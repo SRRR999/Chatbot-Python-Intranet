@@ -109,6 +109,10 @@ python main.py
 
 ├── 📄 chatbot_gui.py        # Ventana principal y control de pestañas (PySide2)
 
+├── 📄 chat_actions.py       # Lógica del chat: envío a IA, sugerencias, respuestas
+
+├── 📄 admin_actions.py      # Lógica administrativa: editar y agregar Q&A
+
 ├── 📄 config.py             # Cargador de configuraciones y variables de entorno
 
 ├── 📄 main.py               # punto de entrada.

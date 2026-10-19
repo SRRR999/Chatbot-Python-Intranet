@@ -6,24 +6,24 @@ _ROUNDS = 12
 
 
 def _preparar(password: str) -> bytes:
-    return hashlib.sha256(password.encode("utf-8")).digest()
+	return hashlib.sha256(password.encode("utf-8")).digest()
 
 
 def hash_password(password: str) -> str:
-    if not password:
-        raise ValueError("La contraseña no puede estar vacía.")
-    salt = bcrypt.gensalt(rounds=_ROUNDS)
-    return bcrypt.hashpw(_preparar(password), salt).decode("utf-8")
+	if not password:
+		raise ValueError("La contraseña no puede estar vacía.")
+	salt = bcrypt.gensalt(rounds=_ROUNDS)
+	return bcrypt.hashpw(_preparar(password), salt).decode("utf-8")
 
 
 def verify_password(password: str, hashed: str) -> bool:
-    if not password or not hashed:
-        return False
-    try:
-        return bcrypt.checkpw(_preparar(password), hashed.encode("utf-8"))
-    except (ValueError, TypeError):
-        return False
+	if not password or not hashed:
+		return False
+	try:
+		return bcrypt.checkpw(_preparar(password), hashed.encode("utf-8"))
+	except (ValueError, TypeError):
+		return False
 
 
 def is_hashed(value: str) -> bool:
-    return isinstance(value, str) and value.startswith(("$2a$", "$2b$", "$2y$"))
+	return isinstance(value, str) and value.startswith(("$2a$", "$2b$", "$2y$"))

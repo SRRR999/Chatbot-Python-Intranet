@@ -11,34 +11,34 @@ SUGERENCIAS_POR_PAGINA = 5
 
 class ChatActionsMixin:
 	def enviar_a_ia(self):
-	    pregunta = self.ia_input.text().strip()
-	    if not pregunta:
-	        QMessageBox.warning(self, "Campo vacío", "Por favor escribe algo.")
-	        return
+		pregunta = self.ia_input.text().strip()
+		if not pregunta:
+			QMessageBox.warning(self, "Campo vacío", "Por favor escribe algo.")
+			return
 
-	    # 1. Buscar primero en la DB
-	    match = buscar_pregunta_similar(pregunta)
+		# 1. Buscar primero en la DB
+		match = buscar_pregunta_similar(pregunta)
 
-	    if match:
-	        db_pregunta, db_respuesta, score = match
-	        self.area_chat.append(
-	            f"<span style='color:#0074D9;'><b>Tú:</b> {pregunta}</span>"
-	        )
-	        self.area_chat.append(
-	            f"<span style='color:#219150;'><b>📚 Base de conocimiento"
-	            f" (match {score}%):</b> {db_respuesta}</span><br>"
-	        )
-	        self.ia_input.clear()
-	        return  # ← no llama a la IA
+		if match:
+			db_pregunta, db_respuesta, score = match
+			self.area_chat.append(
+				f"<span style='color:#0074D9;'><b>Tú:</b> {pregunta}</span>"
+			)
+			self.area_chat.append(
+				f"<span style='color:#219150;'><b>📚 Base de conocimiento"
+				f" (match {score}%):</b> {db_respuesta}</span><br>"
+			)
+			self.ia_input.clear()
+			return  # ← no llama a la IA
 
-	    # 2. Si no hay match, ir a la IA con contexto
-	    todas = get_preguntas_respuestas()
-	    sugerencias = [p for p, _ in todas[:5]]   # top 5 como contexto
-	    prompt = generar_prompt(pregunta, sugerencias)
+		# 2. Si no hay match, ir a la IA con contexto
+		todas = get_preguntas_respuestas()
+		sugerencias = [p for p, _ in todas[:5]]   # top 5 como contexto
+		prompt = generar_prompt(pregunta, sugerencias)
 
-	    self.worker = IAWorker(prompt, self.openai_client)
-	    self.worker.resultado.connect(self.mostrar_respuesta_ia)
-	    self.worker.start()
+		self.worker = IAWorker(prompt, self.openai_client)
+		self.worker.resultado.connect(self.mostrar_respuesta_ia)
+		self.worker.start()
 
 	def mostrar_respuesta_ia(self, respuesta):
 		pregunta = self.ia_input.text().strip()

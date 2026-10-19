@@ -26,14 +26,17 @@ def init_db():
 def registrar_usuario(nombre_usuario, password, rol="empleado"):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
+    
     try:
         password_hash = hash_password(password)
         c.execute("INSERT INTO usuarios (nombre_usuario, password, rol) VALUES (?, ?, ?)",
                   (nombre_usuario, password_hash, rol))
         conn.commit()
         return True
+        
     except sqlite3.IntegrityError:
         return False
+        
     finally:
         conn.close()
 
@@ -76,11 +79,14 @@ def get_preguntas_respuestas():
 def insertar_pregunta_respuesta(pregunta, respuesta):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
+    
     try:
         c.execute("INSERT INTO preguntas_respuestas (pregunta, respuesta) VALUES (?, ?)", (pregunta, respuesta))
         conn.commit()
+        
     except sqlite3.IntegrityError:
         pass
+        
     finally:
         conn.close()
 

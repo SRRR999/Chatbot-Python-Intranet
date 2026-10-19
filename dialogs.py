@@ -5,6 +5,7 @@ from PySide2.QtWidgets import (
 from db_helpers import registrar_usuario, autenticar_usuario, existe_admin
 import password
 
+
 class RegistroDialog(QDialog):
     def __init__(self):
         super().__init__()

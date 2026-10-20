@@ -54,6 +54,17 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
 
 	def init_ui(self):
 		self.tabWidget = QTabWidget(self)
+
+		self.tabWidget.setStyleSheet("""
+			QTabBar::tab {
+				font-size: 12px;
+				font-family: 'Times New Roman';
+				padding: 6px 12px;
+			}
+			QTabBar::tab:selected {
+				font-weight: bold;
+			}
+		""")
 		
 		if self.usuario['rol'] != 'admin':
 			self.init_chat_tab()
@@ -211,7 +222,6 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
 
 		self.sugerir_tab.setLayout(layout)
 		self.tabWidget.insertTab(1, self.sugerir_tab, "Sugerir Pregunta/Respuesta")
-		self.fuente_pestana(self.tabWidget, 1, 12)
 
 
 	def abrir_tab_sugerir(self):

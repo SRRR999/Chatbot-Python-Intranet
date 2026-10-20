@@ -118,6 +118,12 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
 		self.area_chat.setFixedHeight(240)
 		self.area_chat.setStyleSheet("font-size: 13px; font-family: 'Times New Roman';")
 		self.chat_layout.addWidget(self.area_chat)
+		
+		self.boton_editar_respuesta = QPushButton("✏️ Editar esta respuesta")
+		self.fuente(self.boton_editar_respuesta, 11)
+		self.boton_editar_respuesta.clicked.connect(self.abrir_pestana_editar)
+		self.boton_editar_respuesta.setVisible(False)
+		self.chat_layout.addWidget(self.boton_editar_respuesta, alignment=Qt.AlignRight)
 
 		# ---- Botones en una fila, campo de texto de sugerencias debajo ----
 		self.entrada_layout = QHBoxLayout()

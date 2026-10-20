@@ -26,7 +26,7 @@ class ChatActionsMixin:
 			)
 			self.area_chat.append(
 				f"<span style='color:#219150;'><b>📚 Base de conocimiento"
-				f" (match {score}%):</b> {db_respuesta}</span><br>"
+				f" {score}%:</b><br/>{db_respuesta}</span><br>"
 			)
 			self.ia_input.clear()
 			return  # ← no llama a la IA
@@ -112,11 +112,15 @@ class ChatActionsMixin:
 	def mostrar_respuesta(self, pregunta, respuesta):
 		self.area_chat.append(f"<span style='color:#219150; font-family: Times New Roman; font-size: 13px;'><b>{pregunta}</b></span>")
 		self.area_chat.append(f"<span style='color:#222; font-family: Times New Roman; font-size: 13px;'>{respuesta}</span><br>")
-		self.mostrar_boton_editar(pregunta, respuesta)
+		self.pregunta_actual_editable = pregunta
+		self.respuesta_actual_editable = respuesta
+		if self.usuario['rol'] == 'admin':
+			self.boton_editar_respuesta.setVisible(True)
 
 
 	def limpiar_pantalla(self):
 		self.area_chat.clear()
+		self.boton_editar_respuesta.setVisible(False)
 
 
 	def update_advertencia_btn(self):

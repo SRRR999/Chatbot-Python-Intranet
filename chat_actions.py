@@ -49,15 +49,17 @@ class ChatActionsMixin:
 
 	def buscar_sugerencias(self):
 		palabra = self.entrada_usuario.text().strip()
-		todas_preguntas = get_preguntas_respuestas()
 		if not palabra:
-			self.mostrar_sugerencias_aleatorias()
+			QMessageBox.warning(self, "Campo vacío",
+								"Escribe una palabra clave para buscar.")
 			return
+		todas_preguntas = get_preguntas_respuestas()
 		self.sugerencias = [(p, r) for (p, r) in todas_preguntas if palabra.lower() in p.lower()]
 		self.sugerencias_pagina = 0
 		if not self.sugerencias:
 			self.mostrar_sugerencias([])
-			QMessageBox.information(self, "Sin resultados", "No se encontraron preguntas relacionadas. Intenta con otra palabra clave.")
+			QMessageBox.information(self, "Sin resultados",
+									"No se encontraron preguntas relacionadas. Intenta con otra palabra clave.")
 		else:
 			self.mostrar_sugerencias(self.sugerencias)
 

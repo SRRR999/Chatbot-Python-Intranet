@@ -67,7 +67,7 @@ source venv/bin/activate
 Instala los paquetes necesarios ejecutando el siguiente comando:
 
 ```bash
-pip install PySide2 openai python-dotenv rapidfuzz bcrypt
+pip install -r requirements.txt
 ```
 
 ### 4. Configura tus variables de entorno
@@ -106,6 +106,8 @@ python main.py
 ├── 📄 .env                  # Variables de entorno y llaves privadas (Ignorado por Git)
 
 ├── 📄 .gitignore            # Archivos y carpetas ignorados por control de versiones
+
+├── 📄 requirements.txt      # Dependencias del proyecto
 
 ├── 📄 chatbot_gui.py        # Ventana principal y control de pestañas (PySide2)
 

@@ -1,0 +1,14 @@
+# GUI
+PySide2>=5.15.2.1
+
+# IA
+openai>=1.0.0
+
+# Configuración
+python-dotenv>=1.0.0
+
+# Seguridad
+bcrypt>=4.1.0
+
+# Búsqueda difusa
+rapidfuzz>=3.0.0

@@ -86,7 +86,6 @@ Puedes cambiar fácilmente la identidad visual de tu chatbot:
 1. Reemplaza los archivos de imagen ubicados en `icon/` por tus propios logos.
 2. Asegúrate de mantener los mismos nombres de archivo o actualiza las rutas en el archivo de configuración (config.py).
 
-*(Nota: Los iconos por defecto utilizados en este proyecto provienen de [Magnific](https://www.magnific.com/) y se otorgan los créditos correspondientes a sus autores).*
 
 ### 🚀 Uso de la Aplicación
 
@@ -140,7 +139,8 @@ python main.py
 * Créditos a los autores de los iconos:
   * chatbot.png: Diseñado por [ppanggm](https://www.magnific.com/es/autor/ppanggm/iconos)
   * burbuja-de-chat.png --- edicion-chat.png --- sugerencia-chat.png: Diseñados por [Prabowo747](https://www.magnific.com/es/autor/prabowo747/iconos)
-  * usuario.png: DIseñado por [Rukanicon](https://www.magnific.com/es/autor/rukanicon/iconos)
+  * usuario.png: Diseñado por [Rukanicon](https://www.magnific.com/es/autor/rukanicon/iconos)
+  * password.png: Diseñado por [DinosoftLabs](https://icon-icons.com/authors/452-dinosoftlabs) en [Icon-Icons](https://icon-icons.com)
 
 ---
 ### 🤝 Contribuciones

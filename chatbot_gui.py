@@ -199,34 +199,52 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
 
 	def init_sugerir_tab(self):
 		self.sugerir_tab = QWidget()
-		layout = QVBoxLayout()
+		main_layout = QHBoxLayout()
+		form_layout = QVBoxLayout()
 
 		label = QLabel("Sugiere una nueva pregunta y respuesta que creas que falta")
 		self.fuente(label, 12)
-		layout.addWidget(label)
+		form_layout.addWidget(label)
 
 		self.sugerir_pregunta = QLineEdit()
 		self.sugerir_pregunta.setPlaceholderText("Pregunta sugerida")
 		self.fuente(self.sugerir_pregunta, 11)
-		layout.addWidget(self.sugerir_pregunta)
+		form_layout.addWidget(self.sugerir_pregunta)
 
 		self.sugerir_respuesta = QTextEdit()
 		self.sugerir_respuesta.setPlaceholderText("Respuesta sugerida")
 		self.sugerir_respuesta.setFixedHeight(80)
 		self.sugerir_respuesta.setStyleSheet("font-size: 12px; font-family: 'Times New Roman';")
-		layout.addWidget(self.sugerir_respuesta)
+		form_layout.addWidget(self.sugerir_respuesta)
 
 		self.boton_guardar_sugerencia = QPushButton("Guardar sugerencia")
 		self.fuente(self.boton_guardar_sugerencia, 11)
 		self.boton_guardar_sugerencia.clicked.connect(self.guardar_sugerencia_usuario)
-		layout.addWidget(self.boton_guardar_sugerencia)
+		form_layout.addWidget(self.boton_guardar_sugerencia)
 
 		self.boton_volver_chat = QPushButton("Volver al Chat")
 		self.fuente(self.boton_volver_chat, 11)
 		self.boton_volver_chat.clicked.connect(lambda: self.tabWidget.setCurrentWidget(self.chat_tab))
-		layout.addWidget(self.boton_volver_chat)
+		form_layout.addWidget(self.boton_volver_chat)
 
-		self.sugerir_tab.setLayout(layout)
+		main_layout.addLayout(form_layout)
+
+		# Logo a la derecha (igual que Editar y Agregar)
+		logo_layout = QVBoxLayout()
+		self.sugerir_logo = QLabel()
+		
+		if os.path.exists(LOGO_PATH_SUGE):
+			self.sugerir_logo.setPixmap(QPixmap(LOGO_PATH_SUGE))
+			
+			
+		self.sugerir_logo.setScaledContents(True)
+		self.sugerir_logo.setFixedSize(200, 200)
+		logo_layout.addStretch()
+		logo_layout.addWidget(self.sugerir_logo)
+		logo_layout.addStretch()
+		main_layout.addLayout(logo_layout)
+
+		self.sugerir_tab.setLayout(main_layout)
 		self.tabWidget.insertTab(1, self.sugerir_tab, "Sugerir Pregunta/Respuesta")
 
 

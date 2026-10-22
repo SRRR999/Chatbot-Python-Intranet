@@ -6,7 +6,6 @@ from PySide2.QtWidgets import (
 )
 from PySide2.QtCore import QTimer, QCoreApplication, Qt
 from PySide2.QtGui import QPixmap
-
 from ia_helpers import generar_prompt, IAWorker
 from dialogs import LoginDialog
 from config import OPENAI_API_KEY, OPENAI_BASE_URL, LOGO_PATH, LOGO_PATH_EDIT, LOGO_PATH_SAVE, LOGO_PATH_SUGE

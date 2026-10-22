@@ -12,6 +12,7 @@ class AdminActionsMixin:
 	def guardar_sugerencia_usuario(self):
 		pregunta = self.sugerir_pregunta.text().strip()
 		respuesta = self.sugerir_respuesta.toPlainText().strip()
+		
 		if not pregunta or not respuesta:
 			QMessageBox.warning(self, "Campos vacíos", "Por favor, completa la pregunta y la respuesta.")
 			return
@@ -27,16 +28,19 @@ class AdminActionsMixin:
 	def guardar_cambios_edicion(self):
 		pregunta_nueva = self.edit_pregunta.text().strip()
 		respuesta_nueva = self.edit_respuesta.toPlainText().strip()
+		
 		if pregunta_nueva and respuesta_nueva:
 			update_pregunta_respuesta(
 				self.pregunta_actual_editable, self.respuesta_actual_editable,
 				pregunta_nueva, respuesta_nueva
 			)
+			
 			QMessageBox.information(self, "Éxito", "Pregunta y respuesta actualizadas correctamente.")
 			self.tabWidget.setCurrentWidget(self.chat_tab)
 			self.pregunta_actual_editable = None
 			self.respuesta_actual_editable = None
 			self.buscar_sugerencias()
+			
 		else:
 			QMessageBox.warning(self, "Error", "No puedes dejar campos vacíos.")
 
@@ -58,16 +62,21 @@ class AdminActionsMixin:
 	def agregar_pregunta_respuesta(self):
 		pregunta = self.agregar_pregunta.text().strip()
 		respuesta = self.agregar_respuesta.toPlainText().strip()
+		
 		if pregunta and respuesta:
 			datos = get_preguntas_respuestas()
+			
 			if any(pregunta.lower() == p.lower() for p, _ in datos):
 				QMessageBox.warning(self, "Duplicado", "Esa pregunta ya existe.")
 				return
+				
+				
 			insertar_pregunta_respuesta(pregunta, respuesta)
 			self.area_chat.append("Chatbot: Se ha actualizado la base de datos.\n")
 			self.agregar_pregunta.clear()
 			self.agregar_respuesta.clear()
 			eliminar_pregunta_del_txt(pregunta)
 			self.buscar_sugerencias()
+			
 		else:
 			QMessageBox.warning(self, "Campos vacíos", "No puedes dejar campos vacíos.")

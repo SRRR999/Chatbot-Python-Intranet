@@ -3,6 +3,9 @@ from PySide2.QtWidgets import (
 	QHBoxLayout
 )
 from db_helpers import registrar_usuario, autenticar_usuario, existe_admin
+from PySide2.QtGui import QIcon
+from config import LOGO_PATH_USUARIO, LOGO_PATH_PASSWORD
+import os
 import password
 
 
@@ -17,10 +20,20 @@ class RegistroDialog(QDialog):
 
 		self.input_usuario = QLineEdit()
 		self.input_usuario.setPlaceholderText("Nombre de usuario")
+		
+		if os.path.exists(LOGO_PATH_USUARIO):
+			self.input_usuario.addAction(QIcon(LOGO_PATH_USUARIO), QLineEdit.LeadingPosition)
+			
+			
 		layout.addWidget(self.input_usuario)
 
 		self.input_password = QLineEdit()
 		self.input_password.setPlaceholderText("Contraseña")
+		
+		if os.path.exists(LOGO_PATH_PASSWORD):
+			self.input_password.addAction(QIcon(LOGO_PATH_PASSWORD), QLineEdit.LeadingPosition)
+		
+		
 		self.input_password.setEchoMode(QLineEdit.Password)
 		layout.addWidget(self.input_password)
 
@@ -71,10 +84,20 @@ class LoginDialog(QDialog):
 
 		self.input_usuario = QLineEdit()
 		self.input_usuario.setPlaceholderText("Nombre de usuario")
+		
+		if os.path.exists(LOGO_PATH_USUARIO):
+			self.input_usuario.addAction(QIcon(LOGO_PATH_USUARIO), QLineEdit.LeadingPosition)
+
+
 		layout.addWidget(self.input_usuario)
 
 		self.input_password = QLineEdit()
 		self.input_password.setPlaceholderText("Contraseña")
+		
+		if os.path.exists(LOGO_PATH_PASSWORD):
+			self.input_password.addAction(QIcon(LOGO_PATH_PASSWORD), QLineEdit.LeadingPosition)
+
+		
 		self.input_password.setEchoMode(QLineEdit.Password)
 		layout.addWidget(self.input_password)
 

@@ -1,4 +1,5 @@
 from PySide2.QtWidgets import QMessageBox
+import sqlite3
 
 from db_helpers import (
 	get_preguntas_respuestas,
@@ -29,20 +30,20 @@ class AdminActionsMixin:
 		respuesta_nueva = self.edit_respuesta.toPlainText().strip()
 		
 		if pregunta_nueva and respuesta_nueva:
-			update_pregunta_respuesta(
-				self.pregunta_actual_editable, self.respuesta_actual_editable,
-				pregunta_nueva, respuesta_nueva
-			)
-			
-			QMessageBox.information(self, "Éxito", "Pregunta y respuesta actualizadas correctamente.")
-			self.tabWidget.setCurrentWidget(self.chat_tab)
-			self.pregunta_actual_editable = None
-			self.respuesta_actual_editable = None
-			self.buscar_sugerencias()
-			
+			try:
+				update_pregunta_respuesta(
+					self.pregunta_actual_editable, self.respuesta_actual_editable,
+					pregunta_nueva, respuesta_nueva
+				)
+				QMessageBox.information(self, "Éxito", "Pregunta y respuesta actualizadas correctamente.")
+				self.tabWidget.setCurrentWidget(self.chat_tab)
+				self.pregunta_actual_editable = None
+				self.respuesta_actual_editable = None
+			except sqlite3.IntegrityError:
+				QMessageBox.warning(self, "Duplicado",
+									"Ya existe una pregunta con ese texto. Elegí otro.")
 		else:
 			QMessageBox.warning(self, "Error", "No puedes dejar campos vacíos.")
-			
 
 	def abrir_pestana_editar(self):
 		self.edit_pregunta.setText(self.pregunta_actual_editable)
@@ -67,7 +68,6 @@ class AdminActionsMixin:
 			self.agregar_pregunta.clear()
 			self.agregar_respuesta.clear()
 			eliminar_pregunta_del_txt(pregunta)
-			self.buscar_sugerencias()
 			
 		else:
 			QMessageBox.warning(self, "Campos vacíos", "No puedes dejar campos vacíos.")

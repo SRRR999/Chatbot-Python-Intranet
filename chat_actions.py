@@ -28,8 +28,13 @@ class ChatActionsMixin:
 				f"<span style='color:#219150;'><b>--------- 📚 Respuesta ---------------------"
 				f"<br/>{db_respuesta}</span><br>"
 			)
+			# Setear variables y mostrar botón (lo que hace mostrar_respuesta, sin los appends)
+			self.pregunta_actual_editable = db_pregunta
+			self.respuesta_actual_editable = db_respuesta
+			if self.usuario['rol'] == 'admin':
+				self.boton_editar_respuesta.setVisible(True)
 			self.ia_input.clear()
-			return  # ← no llama a la IA
+			return
 
 		# 2. Si no hay match, ir a la IA con contexto
 		todas = get_preguntas_respuestas()

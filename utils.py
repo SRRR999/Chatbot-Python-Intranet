@@ -1,13 +1,6 @@
-import socket
 import os
 from config import PREGUNTAS_NO_RESUELTAS
 
-def verificar_conexion_internet():
-	try:
-		socket.create_connection(("www.google.com", 80), timeout=2)
-		return True
-	except Exception:
-		return False
 
 def guardar_pregunta_no_resuelta(pregunta):
 	with open(PREGUNTAS_NO_RESUELTAS, "a") as archivo:

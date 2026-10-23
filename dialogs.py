@@ -1,12 +1,11 @@
 from PySide2.QtWidgets import (
-	QDialog, QLineEdit, QPushButton, QVBoxLayout, QLabel, QMessageBox,
+	QDialog, QLineEdit, QPushButton, QVBoxLayout, QMessageBox,
 	QHBoxLayout
 )
 from db_helpers import registrar_usuario, autenticar_usuario, existe_admin
 from PySide2.QtGui import QIcon
 from config import LOGO_PATH_USUARIO, LOGO_PATH_PASSWORD
 import os
-import password
 
 
 class RegistroDialog(QDialog):
@@ -42,7 +41,6 @@ class RegistroDialog(QDialog):
 		layout.addWidget(self.btn_registrar)
 
 		self.setLayout(layout)
-		self.usuario = None
 
 
 	def registrar(self):

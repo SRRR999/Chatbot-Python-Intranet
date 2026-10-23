@@ -1,24 +1,14 @@
 import os
-import random
 from PySide2.QtWidgets import (
 	QWidget, QVBoxLayout, QLineEdit, QPushButton, QTextBrowser,
-	QTabWidget, QHBoxLayout, QTextEdit, QLabel, QMessageBox, QScrollArea, QApplication, QDialog
+	QTabWidget, QHBoxLayout, QTextEdit, QLabel, QScrollArea
 )
-from PySide2.QtCore import QTimer, QCoreApplication, Qt
+from PySide2.QtCore import QTimer, Qt
 from PySide2.QtGui import QPixmap
-from ia_helpers import generar_prompt, IAWorker
-from dialogs import LoginDialog
 from config import OPENAI_API_KEY, OPENAI_BASE_URL, LOGO_PATH, LOGO_PATH_EDIT, LOGO_PATH_SAVE, LOGO_PATH_SUGE
 import openai
 from admin_actions import AdminActionsMixin
 from chat_actions import ChatActionsMixin
-from db_helpers import (
-	init_db, get_preguntas_respuestas, insertar_pregunta_respuesta,
-	update_pregunta_respuesta
-)
-from utils import (
-	guardar_pregunta_no_resuelta, eliminar_pregunta_del_txt, cargar_preguntas_no_resueltas
-)
 
 
 
@@ -42,16 +32,6 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
 
 	def fuente(self, var, font_size=10):
 		var.setStyleSheet(f"font-size: {font_size}px; font-family: 'Times New Roman';")
-
-
-	def fuente_pestana(self, tab_widget, index, font_size=10):
-		estilo_actual = tab_widget.styleSheet() or ""
-		tab_widget.setStyleSheet(estilo_actual + f"""
-			QTabWidget::tab:nth({index}) {{
-				font-size: {font_size}px;
-				font-family: 'Times New Roman';
-			}}
-		""")
 
 
 	def init_ui(self):
@@ -345,11 +325,6 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
 		self.admin_layout_principal.addLayout(self.admin_logo_layout)
 		self.admin_tab.setLayout(self.admin_layout_principal)
 		self.tabWidget.insertTab(4, self.admin_tab, "Agregar Preguntas/Respuestas")
-
-
-	def mostrar_boton_editar(self, pregunta, respuesta):
-		self.pregunta_actual_editable = pregunta
-		self.respuesta_actual_editable = respuesta
 		
 
 	def abrir_pestana_editar(self):

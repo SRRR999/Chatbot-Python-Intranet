@@ -2,7 +2,7 @@ import random
 
 from PySide2.QtWidgets import QMessageBox, QPushButton
 
-from db_helpers import get_preguntas_respuestas, buscar_pregunta_similar
+from db_helpers import get_preguntas_respuestas, buscar_pregunta_similar, buscar_sugerencias_similares
 from ia_helpers import generar_prompt, IAWorker
 from utils import cargar_preguntas_no_resueltas
 
@@ -26,7 +26,7 @@ class ChatActionsMixin:
 			)
 			self.area_chat.append(
 				f"<span style='color:#219150;'><b>📚 Base de conocimiento"
-				f" {score}%:</b><br/>{db_respuesta}</span><br>"
+				f" {int(score)}%:</b><br/>{db_respuesta}</span><br>"
 			)
 			self.ia_input.clear()
 			return  # ← no llama a la IA
@@ -54,7 +54,7 @@ class ChatActionsMixin:
 								"Escribe una palabra clave para buscar.")
 			return
 		todas_preguntas = get_preguntas_respuestas()
-		self.sugerencias = [(p, r) for (p, r) in todas_preguntas if palabra.lower() in p.lower()]
+		self.sugerencias = buscar_sugerencias_similares(palabra, limit=20, umbral=60)
 		self.sugerencias_pagina = 0
 		if not self.sugerencias:
 			self.mostrar_sugerencias([])

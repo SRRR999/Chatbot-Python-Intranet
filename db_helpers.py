@@ -128,3 +128,23 @@ def buscar_pregunta_similar(pregunta_usuario, umbral=70):
 		if p == match_pregunta:
 			return (p, r, score)
 	return None
+
+
+def buscar_sugerencias_similares(pregunta_usuario, limit=20, umbral=60):
+	todas = get_preguntas_respuestas()
+	if not todas:
+		return []
+
+	preguntas = [p for p, _ in todas]
+	resultados = process.extract(
+		pregunta_usuario,
+		preguntas,
+		scorer=fuzz.token_set_ratio,
+		limit=limit,
+	)
+
+	sugerencias = []
+	for _, score, idx in resultados:
+		if score >= umbral:
+			sugerencias.append(todas[idx])
+	return sugerencias

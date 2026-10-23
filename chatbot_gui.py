@@ -30,7 +30,10 @@ class ChatbotGUI(ChatActionsMixin, AdminActionsMixin, QWidget):
 		self.pregunta_actual_editable = None
 		self.respuesta_actual_editable = None
 		self.usuario = usuario
-		self.openai_client = openai.OpenAI(api_key=OPENAI_API_KEY, base_url=OPENAI_BASE_URL)
+		self.openai_client = openai.OpenAI(
+			api_key=OPENAI_API_KEY, base_url=OPENAI_BASE_URL,
+			timeout=30.0,
+		)
 		self.init_ui()
 		self.timer = QTimer()
 		self.timer.timeout.connect(self.update_advertencia_btn)

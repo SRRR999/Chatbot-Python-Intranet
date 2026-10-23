@@ -22,7 +22,6 @@ class AdminActionsMixin:
 		self.sugerir_pregunta.clear()
 		self.sugerir_respuesta.clear()
 		self.tabWidget.setCurrentWidget(self.chat_tab)
-		self.boton_volver_chat.clicked.connect(lambda: self.tabWidget.setCurrentWidget(self.chat_tab))
 
 
 	def guardar_cambios_edicion(self):
@@ -43,15 +42,7 @@ class AdminActionsMixin:
 			
 		else:
 			QMessageBox.warning(self, "Error", "No puedes dejar campos vacíos.")
-
-
-	def mostrar_boton_editar(self, pregunta, respuesta):
-		self.pregunta_actual_editable = pregunta
-		self.respuesta_actual_editable = respuesta
-		
-		if self.usuario['rol'] == 'admin':
-			self.abrir_pestana_editar()
-
+			
 
 	def abrir_pestana_editar(self):
 		self.edit_pregunta.setText(self.pregunta_actual_editable)

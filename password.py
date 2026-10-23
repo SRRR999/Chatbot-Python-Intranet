@@ -23,7 +23,3 @@ def verify_password(password: str, hashed: str) -> bool:
 		return bcrypt.checkpw(_preparar(password), hashed.encode("utf-8"))
 	except (ValueError, TypeError):
 		return False
-
-
-def is_hashed(value: str) -> bool:
-	return isinstance(value, str) and value.startswith(("$2a$", "$2b$", "$2y$"))

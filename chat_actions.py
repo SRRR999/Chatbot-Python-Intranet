@@ -25,7 +25,7 @@ class ChatActionsMixin:
 				f"<span style='color:#0074D9;'><b>Tú:</b> {pregunta}</span>"
 			)
 			self.area_chat.append(
-				f"<span style='color:#219150;'><b>--------- 📚 Respueta ---------------------"
+				f"<span style='color:#219150;'><b>--------- 📚 Respuesta ---------------------"
 				f"<br/>{db_respuesta}</span><br>"
 			)
 			self.ia_input.clear()
@@ -56,9 +56,8 @@ class ChatActionsMixin:
 								"Escribe una palabra clave para buscar.")
 			return
 			
-			
-		todas_preguntas = get_preguntas_respuestas()
-		self.sugerencias = buscar_sugerencias_similares(palabra, limit=20, umbral=60)
+
+		self.sugerencias = buscar_sugerencias_similares(palabra, limit=5, umbral=60)
 		self.sugerencias_pagina = 0
 		
 		if not self.sugerencias:
@@ -117,11 +116,6 @@ class ChatActionsMixin:
 			btn.setToolTip(pregunta)
 			btn.clicked.connect(lambda _=None, p=pregunta, r=respuesta: self.mostrar_respuesta(p, r))
 			self.sugerencias_panel_layout.addWidget(btn)
-
-
-	def ver_mas_sugerencias(self):
-		self.sugerencias_pagina += 1
-		self.mostrar_sugerencias(self.sugerencias)
 
 
 	def mostrar_respuesta(self, pregunta, respuesta):

@@ -1,5 +1,5 @@
 import sqlite3
-from password import hash_password, verify_password, is_hashed
+from password import hash_password, verify_password
 from rapidfuzz import fuzz, process
 
 DB_PATH = "chatbot.db"

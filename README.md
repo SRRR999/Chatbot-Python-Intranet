@@ -126,8 +126,6 @@ python main.py
 
 ├── 📄 password.py           # Hash y verificación de contraseñas (bcrypt)
 
-├── 📄 nlp_helpers.py        # Funciones de procesamiento de texto y búsqueda difusa
-
 ├── 📄 utils.py              # Funciones auxiliares (conexión a internet y archivos de texto)
 
 └── 📄 README.md             # Documentación oficial del proyecto

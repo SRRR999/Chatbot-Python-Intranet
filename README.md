@@ -4,6 +4,23 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 
 ---
 
+## 📸 Capturas de pantalla
+
+### Login
+![Login](screenshots/login.png)
+
+### Chat Administrador
+![Chat Administrador](screenshots/chat-admin.png)
+
+### Chat Empleado
+![Chat Empleado](screenshots/chat-empleado.png)
+
+### Pestaña Editar Pregunta--Respuesta
+![Pestaña Editar Pregunta--Respuesta](screenshots/editar-pregunta-respuesta.png)
+
+
+---
+
 ## ✨ Características Principales
 
 * **Interfaz Gráfica (PySide2):** Interfaz limpia estructurada en pestañas con diseño optimizado (fuentes personalizadas, logotipos y paneles interactivos).

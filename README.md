@@ -158,8 +158,16 @@ python main.py
   * password.png: Diseñado por [DinosoftLabs](https://icon-icons.com/authors/452-dinosoftlabs) en [Icon-Icons](https://icon-icons.com)
 
 ---
+
 ### 🤝 Contribuciones
 ¡Las contribuciones y sugerencias son completamente bienvenidas! Si deseas proponer mejoras, por favor abre un issue o envía un pull request con tus cambios propuestos.
+
+---
+
+## 📌 Estado del proyecto
+Versión estable **v1.0.0**. Proyecto de portafolio, no pensado para producción.
+Pueden existir bugs menores; se corrigen en parches posteriores (`v1.0.1`, etc.).
+Sin mantenimiento activo.
 
 ---
 ### 📄 Licencia

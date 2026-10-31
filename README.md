@@ -4,6 +4,11 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 
 ---
 
+### 📌 Notas Importantes
+* Este proyecto utiliza PySide2 (LGPL), OpenAI y bcrypt (Apache 2.0). Consulta el archivo Third-Party Notices para más detalles.
+
+---
+
 ## 📸 Capturas de pantalla
 
 ### Login

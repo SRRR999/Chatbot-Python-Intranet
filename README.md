@@ -5,7 +5,7 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 ---
 
 ### 📌 Notas Importantes
-* Este proyecto utiliza PySide2 (LGPL), OpenAI y bcrypt (Apache 2.0). Consulta el archivo Third-Party Notices para más detalles.
+* Este proyecto utiliza PySide2 (LGPL), OpenAI y bcrypt (Apache 2.0). Consulta el archivo NOTICE.md para más detalles.
 
 ---
 
@@ -65,8 +65,8 @@ Sigue estos pasos para clonar y poner en marcha el proyecto en tu máquina local
 
 ### 1. Clona el repositorio
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
+git clone https://github.com/SRRR999/Chatbot-Python-Intranet
+cd Chatbot-Python-Intranet
 ```
 
 ### 2. Crea y activa un entorno virtual

@@ -165,8 +165,7 @@ python main.py
 ---
 
 ### 🤝 Contribuciones
-¡Las contribuciones y sugerencias son completamente bienvenidas! Si deseas proponer mejoras, por favor abre un issue o envía un pull request con tus cambios propuestos.
-
+Actualmente no se aceptan contribuciones externas.
 ---
 
 ## 📌 Estado del proyecto

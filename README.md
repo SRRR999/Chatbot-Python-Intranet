@@ -5,7 +5,7 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 ---
 
 ### 📌 Notas Importantes
-* Este proyecto utiliza PySide2 (LGPL), OpenAI y bcrypt (Apache 2.0). Consulta el archivo NOTICE.md para más detalles.
+* Este proyecto utiliza PySide2 (LGPL-3.0), OpenAI y bcrypt (Apache 2.0), rapidfuzz (MIT) y python-dotenv (BSD-3-Clause). Consulta el archivo NOTICE.md y el directorio LICENSES/ para más detalles.
 
 ---
 
@@ -46,6 +46,7 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 * **OpenAI Python SDK** (Comunicación con modelos de lenguaje)
 * **python-dotenv** (Gestión segura de variables de entorno)
 * **rapidfuzz** (Coincidencia difusa de texto para sugerencias y NLP)
+* **bcrypt** (Hash seguro de contraseñas)
 * **SQLite3** (Base de datos)
 
 ---
@@ -120,37 +121,43 @@ python main.py
 
 ### 📂 Estructura del Proyecto
 
-📦 tu-repositorio/
+📦 Chatbot-Python-Intranet/
 
 ├── 📁 icon/                 # Recursos gráficos (logotipos e iconos de pestañas)
 
-├── 📄 .env                  # Variables de entorno y llaves privadas (Ignorado por Git)
+├── 📁 LICENSES/             # Textos de licencias
+
+├── 📄 .env.example          # Variables de entorno y llaves privadas (base exacta para el .env personalizado)
 
 ├── 📄 .gitignore            # Archivos y carpetas ignorados por control de versiones
 
-├── 📄 requirements.txt      # Dependencias del proyecto
-
-├── 📄 chatbot_gui.py        # Ventana principal y control de pestañas (PySide2)
+├── 📄 admin_actions.py      # Lógica administrativa: editar y agregar Q&A
 
 ├── 📄 chat_actions.py       # Lógica del chat: envío a IA, sugerencias, respuestas
 
-├── 📄 admin_actions.py      # Lógica administrativa: editar y agregar Q&A
+├── 📄 chatbot_gui.py        # Ventana principal y control de pestañas (PySide2)
 
 ├── 📄 config.py             # Cargador de configuraciones y variables de entorno
 
-├── 📄 main.py               # punto de entrada.
+├── 📄 db_helpers.py         # Conexión, esquemas y operaciones con SQLite
 
 ├── 📄 dialogs.py            # ventanas de login y registro.
 
-├── 📄 db_helpers.py         # Conexión, esquemas y operaciones con SQLite
-
 ├── 📄 ia_helpers.py         # Construcción de prompts y gestión del hilo de IA (QThread)
+
+├── 📄 LICENSE               # Licencia del proyecto
+
+├── 📄 main.py               # punto de entrada.
+
+├── 📄 NOTICE                # Avisos y licencias de terceros
 
 ├── 📄 password.py           # Hash y verificación de contraseñas (bcrypt)
 
-├── 📄 utils.py              # Funciones auxiliares (conexión a internet y archivos de texto)
+├── 📄 README.md             # Documentación oficial del proyecto
 
-└── 📄 README.md             # Documentación oficial del proyecto
+├── 📄 requirements.txt      # Dependencias del proyecto
+
+└── 📄 utils.py              # Funciones auxiliares para archivos de preguntas no resueltas
 
 ---
 

@@ -127,6 +127,8 @@ python main.py
 
 ├── 📁 LICENSES/             # Textos de licencias
 
+├── 📁 screenshots/          # Captures del programa
+
 ├── 📄 .env.example          # Variables de entorno y llaves privadas (base exacta para el .env personalizado)
 
 ├── 📄 .gitignore            # Archivos y carpetas ignorados por control de versiones
@@ -158,16 +160,6 @@ python main.py
 ├── 📄 requirements.txt      # Dependencias del proyecto
 
 └── 📄 utils.py              # Funciones auxiliares para archivos de preguntas no resueltas
-
----
-
-## 🎨 Agradecimientos y Recursos
-
-* Créditos a los autores de los iconos:
-  * chatbot.png: Diseñado por [ppanggm](https://www.magnific.com/es/autor/ppanggm/iconos)
-  * burbuja-de-chat.png --- edicion-chat.png --- sugerencia-chat.png: Diseñados por [Prabowo747](https://www.magnific.com/es/autor/prabowo747/iconos)
-  * usuario.png: Diseñado por [Rukanicon](https://www.magnific.com/es/autor/rukanicon/iconos)
-  * password.png: Diseñado por [DinosoftLabs](https://icon-icons.com/authors/452-dinosoftlabs) en [Icon-Icons](https://icon-icons.com)
 
 ---
 

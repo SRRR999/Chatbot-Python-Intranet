@@ -172,6 +172,10 @@ Versión estable **v1.0.0**. Proyecto de portafolio, no pensado para producción
 Pueden existir bugs menores; se corrigen en parches posteriores (`v1.0.1`, etc.).
 Sin mantenimiento activo.
 
+Aplicación de escritorio de demostración, 
+desarrollada como proyecto personal y orientada a consultas sobre manuales e información de una organización. 
+No ha sido desplegada ni utilizada por una empresa, y no está afiliada ni respaldada por ninguna organización.
+
 ---
 ### 📄 Licencia
 Este proyecto se distribuye bajo los términos de la licencia MIT.

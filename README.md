@@ -5,7 +5,7 @@ Un sistema de escritorio interactivo y modular desarrollado en Python utilizando
 ---
 
 ### 📌 Notas Importantes
-* Este proyecto utiliza PySide2 (LGPL-3.0), OpenAI y bcrypt (Apache 2.0), rapidfuzz (MIT) y python-dotenv (BSD-3-Clause). Consulta el archivo NOTICE.md y el directorio LICENSES/ para más detalles.
+* Este proyecto utiliza PySide2 (LGPL-3.0), OpenAI y bcrypt (Apache 2.0), rapidfuzz (MIT) y python-dotenv (BSD-3-Clause). Consulta el archivo THIRD_PARTY_NOTICES.md y el directorio LICENSES/ para más detalles.
 
 ---
 
@@ -151,7 +151,7 @@ python main.py
 
 ├── 📄 main.py               # punto de entrada.
 
-├── 📄 NOTICE                # Avisos y licencias de terceros
+├── 📄 THIRD_PARTY_NOTICES.md  # Avisos y licencias de terceros
 
 ├── 📄 password.py           # Hash y verificación de contraseñas (bcrypt)
 
